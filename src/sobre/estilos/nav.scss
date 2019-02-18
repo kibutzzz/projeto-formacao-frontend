@@ -1,0 +1,30 @@
+.barra-navegacao {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  
+  background-color: #444;
+
+  .logo-container {
+    display: flex;
+    align-items: center;
+    margin: 0.2em;
+
+    color: $cor-titulo;
+    .logo {
+      height: 50px;
+      margin-right: 0.5em;
+    }
+  }
+
+  .pesquisa {
+    height: 70%;
+    
+    @media (max-width: $mq-max-width-medio){
+      max-width: 50%;
+    }
+
+  }
+
+  
+}

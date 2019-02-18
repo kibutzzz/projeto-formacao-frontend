@@ -1,0 +1,85 @@
+.equipe {
+  background-color: rgb(20, 14, 58);
+
+  .container-sobre {
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: $mq-max-width-medio) {
+      flex-direction: column;
+      margin: 0 4%;
+    }
+
+    .img-equipe {
+      img {
+        max-width: 80%;
+        height: auto;
+        margin: 10%;
+      }
+    }
+
+    .texto-equipe {
+      display: flex;
+      flex-flow: column;
+      justify-content: center;
+      line-height: 1.5em;
+      color: $cor-texto;
+      margin-right: 5%;
+
+      h1 {
+        color: $cor-titulo;
+        align-self: center;
+      }
+
+      a {
+        transition: all 0.2s ease-in-out;
+        color: $cor-texto;
+        text-decoration: none;
+        img {
+          width: 24px;
+          vertical-align: middle;
+        }
+
+        :hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  .container-cards {
+    display: flex;
+
+    justify-content: space-between;
+
+    @media (max-width: $mq-max-width-medio) {
+      flex-direction: column;
+    }
+
+    .itens-empresa:hover {
+      border: white solid 2px;
+    }
+    .itens-empresa {
+      @media (max-width: $mq-max-width-medio) {
+        margin: 2%;
+      }
+      display: flex;
+      flex-flow: column;
+      align-items: center;
+      box-sizing: border-box;
+      border: $cor-texto solid 2px;
+
+      transition: 1s;
+
+      margin: 1%;
+      padding: 3% 1% 1% 1%;
+      color: $cor-texto;
+
+      h1 {
+        color: $cor-titulo;
+      }
+      img {
+        width: 100%;
+      }
+    }
+  }
+}

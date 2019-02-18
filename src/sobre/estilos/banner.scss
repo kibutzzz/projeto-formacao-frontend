@@ -1,0 +1,40 @@
+.banner {
+  background-image: url("../imagens/banner.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  display: flex;
+  justify-content: center;
+ 
+  @media (max-width: $mq-max-width-medio){
+    flex-direction: column; 
+    :last-child {
+      display: none;
+    } 
+  }
+  .container {
+    color: $cor-titulo;
+    width: 27%;
+    padding: 3em 0 3em 0;
+    @media (max-width: $mq-max-width-medio){
+      width: 90%;      
+      margin: 5%;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    p {
+        line-height: 1.5em;
+    }
+
+    button {
+      border: 1px solid white;
+      background-color: transparent;
+      border-radius: 5px;
+      width: 100%;
+      padding: 1em;
+    }
+  }
+}
