@@ -69,7 +69,7 @@ export default class Signup extends Component {
                 {
                     this.state.erros.map(erro => {
                         return (<div>
-                            <p >{erro.msg}</p>
+                            <p style={{color: 'red', margin: 0}}>{erro.msg}</p>
                         </div>);
                     })
                 }
@@ -77,7 +77,7 @@ export default class Signup extends Component {
                     <label>Login</label><input type="text" ref={(input) => this.login = input} required />
                     <label>Senha</label><input type="password" ref={(input) => this.senha = input} required />
                     <label>Confirmação</label><input type="password" ref={(input) => this.confirmacao = input} required />
-                    <label>Url do perfil</label><input type="text" ref={(input) => this.url = input} />
+                    <label>Url do perfil</label><input type="text" ref={(input) => this.url = input} required />
 
                     <input type="submit" value="login" />
                 </form>

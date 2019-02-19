@@ -6,9 +6,9 @@
   display: flex;
   justify-content: center;
  
-  @media (max-width: $mq-max-width-medio){
+  @media (max-width: $mq-max-width-banner){
     flex-direction: column; 
-    :last-child {
+    > :last-child {
       display: none;
     } 
   }
@@ -16,7 +16,7 @@
     color: $cor-titulo;
     width: 27%;
     padding: 3em 0 3em 0;
-    @media (max-width: $mq-max-width-medio){
+    @media (max-width: $mq-max-width-banner){
       width: 90%;      
       margin: 5%;
     }
@@ -35,6 +35,7 @@
       border-radius: 5px;
       width: 100%;
       padding: 1em;
+      color: $cor-titulo;
     }
   }
 }

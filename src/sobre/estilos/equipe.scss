@@ -15,6 +15,7 @@
         height: auto;
         margin: 10%;
       }
+      flex-shrink: 1.2;
     }
 
     .texto-equipe {
@@ -32,7 +33,7 @@
 
       a {
         transition: all 0.2s ease-in-out;
-        color: $cor-texto;
+        color: $cor-titulo;
         text-decoration: none;
         img {
           width: 24px;
