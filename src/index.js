@@ -37,6 +37,7 @@ ReactDOM.render(
         <Route path="/timeline(/:login)" component={App} onEnter={verificaAutenticacao}/>      
         <Route path="/logout" component={Logout}/>
         <Route path="/signup" component={Signup}/>
+        <Route path="/login" component={Login}/>
       </Router>
     </Provider>
   ),

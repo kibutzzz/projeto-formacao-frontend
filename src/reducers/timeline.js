@@ -43,7 +43,6 @@ export function timeline(state = new List(), action) {
     }
 
     if (action.type === "APAGA") {
-        console.log(state);
         return new List(state.filter(foto => action.fotoId !== foto.id));
     }
     return state;

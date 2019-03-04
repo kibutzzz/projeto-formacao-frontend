@@ -23,20 +23,22 @@ export default class SignupApi {
     static cadastrar(login, senha, urlPerfil) {
         const requestInfo = {
             method: 'POST',
-            body: JSON.stringify({ login, senha, urlPerfil }),
+            body: JSON.stringify({ userName: login, password: senha, userProfilePhotoUrl: urlPerfil }),
             headers: new Headers({
                 'Content-type': 'application/json',
-                'X-AUTH-TOKEN': ""
+                // 'X-AUTH-TOKEN': ""
             })
         };
 
 
-        return fetch("http://localhost:8080/usuarios", requestInfo)
+        return fetch("http://localhost:3030/users/signup", requestInfo)
             .then(response => {
                 if (response.ok) {
                     return response.text();
+                } else if (response.status === 500) {
+                    throw new Error('Usuaio já cadastrado');
                 } else {
-                    throw new Error('não foi possível fazer o login');
+                    throw new Error('Oops, algo de errado aconteceu.');
                 }
 
             })
@@ -44,7 +46,7 @@ export default class SignupApi {
                 return browserHistory.push("/login");
             })
             .catch(erro => {
-                console.log(erro);
+                return erro.message;
             });
 
 

@@ -15,9 +15,12 @@ class Timeline extends Component {
       let urlPerfil;
 
       if(this.login === undefined) {
-        urlPerfil = `https://instalura-api.herokuapp.com/api/fotos?X-AUTH-TOKEN=${localStorage.getItem('auth-token')}`;
+        urlPerfil = `http://localhost:3030/alots/photos`;
+        console.log("Não implementado pois não há instruções de como implementar utilizando esta API");
+        // urlPerfil = `https://instalura-api.herokuapp.com/api/fotos?X-AUTH-TOKEN=${localStorage.getItem('auth-token')}`;
       } else {
-        urlPerfil = `https://instalura-api.herokuapp.com/api/public/fotos/${this.login}`;
+        urlPerfil = `http://localhost:3030/${this.login}/photos`;
+        // urlPerfil = `https://instalura-api.herokuapp.com/api/public/fotos/${this.login}`;
       } 
 
       this.props.lista(urlPerfil);                  

@@ -56,30 +56,41 @@ export default class TimelineApi {
 
     static pesquisa(login) {
         return dispatch => {
-            fetch(`https://instalura-api.herokuapp.com/api/public/fotos/${login}`)
-                .then(response => response.json())
+            fetch(`http://localhost:3030/${login}/photos`)
+                .then(response => {
+                    return response.json();
+                })
                 .then(fotos => {
+                    dispatch(notifica("Usuario encontrado"));
                     if (fotos.length === 0) {
-                        dispatch(notifica('usuario não encontrado'));
-                    } else {
-                        dispatch(notifica('usuario encontrado'));
+                        dispatch(notifica('Usuario não possui fotos'));
                     }
-
                     dispatch(listagem(fotos));
                     return fotos;
-                });
+                }).catch(erro => dispatch(notifica("Usuario não encontrado")));
         }
     }
 
     static apaga(fotoId) {
         return dispatch => {
-            fetch(`http://localhost:8080/api/fotos/${fotoId}?X-AUTH-TOKEN=${localStorage.getItem('auth-token')}`, { method: 'DELETE' })
+            fetch(`http://localhost:3030/photos/${fotoId}`,
+                {
+                    method: 'DELETE',
+                    headers: new Headers({
+                        'Content-type': 'application/json',
+                        'x-access-token': localStorage.getItem('auth-token')
+                    })
+                })
                 .then(response => {
-                    console.log(response);
                     if (response.ok) {
-                        return response.json();
+                        return "Apagando";
+                        //Best practice?
+                    } else if (response.status === 404) {
+                        throw new Error("foto não encontrada no servidor");
+                    } else if (response.status === 403) {
+                        throw new Error("Você não pode apagar esta foto");
                     } else {
-                        throw new Error("não foi possível apagar a foto");
+                        throw new Error("Não foi possivel apagar a foto");
                     }
                 })
                 .then(result => {
@@ -87,9 +98,12 @@ export default class TimelineApi {
                     dispatch(notifica("Foto deletada"));
                     return result;
                 })
-                .catch(() => dispatch(notifica("Não foi possivel apagar a foto")));
-           
-            
+                .catch((erro) => {
+                    dispatch(notifica(erro.message))
+
+                });
+
+
         }
 
     }

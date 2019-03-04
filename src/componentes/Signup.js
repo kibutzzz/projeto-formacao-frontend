@@ -30,19 +30,21 @@ export default class Signup extends Component {
 
 
         erros = erros.filter(erro => erro !== undefined);
+        
+        if (erros.length === 0) {
+            this.cadastrar(this.login.value, this.senha.value, this.url.value).then((erro)=> {
+                erros.push({id: 4, msg: erro});
+                this.setState({erros});
+            });
+          
+        }
+        
         this.setState({ erros: erros });
-
-
+        this.login.focus();
         this.login.value = '';
         this.senha.value = '';
         this.confirmacao.value = '';
         this.url.value = '';
-        this.login.focus();
-
-        if (erros.length == 0) {
-            this.cadastrar(this.login.value, this.senha.value, this.url.value);
-        }
-
     }
 
     cadastrar(login, senha, urlPerfil) {

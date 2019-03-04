@@ -32,13 +32,13 @@ class FotoInfo extends Component {
         return (
             <div className="foto-in fo">
               <div className="foto-info-likes">
-                {
+                {/* {
                   this.props.foto.likers.map(liker => {
                     return (<Link key={liker.login} href={`/timeline/${liker.login}`}>{liker.login},</Link>)
                   })
-                }
+                } */}
                  
-                 curtiram
+                 Curtidas
              
               </div>
 
@@ -48,7 +48,7 @@ class FotoInfo extends Component {
               </p>
 
               <ul className="foto-info-comentarios">
-                {
+                {/* {
                   this.props.foto.comentarios.map(comentario => {
                     return (
                       <li className="comentario" key={comentario.id}>
@@ -57,7 +57,8 @@ class FotoInfo extends Component {
                       </li>
                     );
                   })
-                }
+                } */}
+                <li className="comentario"> comentarios desabilitados </li>
               </ul>
             </div>            
         );
@@ -81,7 +82,7 @@ class FotoHeader extends Component {
                   </Link>  
                 </figcaption>
               </figure>
-              <time className="foto-data">{this.props.foto.horario}</time><span onClick={this.apaga.bind(this)} >X</span>
+              <time className="foto-data">{this.props.foto.postDate}</time><span onClick={this.apaga.bind(this)} >X</span>
             </header>            
         );
     }
@@ -92,7 +93,7 @@ export default class FotoItem extends Component {
         return (
           <div className="foto">
             <FotoHeader foto={this.props.foto} apaga={this.props.apaga}/>
-            <img alt="foto" className="foto-src" src={this.props.foto.urlFoto}/>
+            <img alt="foto" className="foto-src" src={this.props.foto.url}/>
             <FotoInfo foto={this.props.foto}/>
             <FotoAtualizacoes {...this.props}/>
           </div>            
